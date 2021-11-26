@@ -13,27 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+# 기본 url
 from django.contrib import admin
-from django.urls import path
-from django.conf.urls import include
-# from kkuduck_project.user_api.models import DefaultSubscription
+from django.urls import path, include
 
-# from django.urls import path, include
-from user_api import views
-from user_api import models
+# 추가되는 url
+from user_api.views import DefaultSubView
+from user_api.views import SubView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('user_api.urls'), name='user_api'),
-    path('models/subscription', models.Subscription, name='subscription'),
-    path('models/DefaultSubscription', models.DefaultSubscription, name='default_subscription')
+    path('users/', include('user_api.urls'), name='user_api'), # from user_api 라는 '앱'에서 import views
 
-    # #홈 화면 설정
-    # path('', views.home, name='home'),
-
-    # #django_auth 기능 사용할 부분
-    # path('auth/', include('django.contrib.auth.urls')),
-    # path('auth/signup', views.SignUp.as_view(), name='signup'),
-    # path('auth/settings', views.settings, name='settings')
+    # default_subscription 과 subscription url로 볼 수 있게...
+    path('default_subscription/', DefaultSubView.as_view(), name='default'),
+    path('subscription/', SubView.as_view(), name='sub')
 ]

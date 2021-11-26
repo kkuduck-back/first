@@ -76,12 +76,22 @@ WSGI_APPLICATION = 'kkuduck_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
+######################## 원래 이거임 #################
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+###################################################
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'kkuduck',
+#     }
+# }
 
 
 # Password validation
